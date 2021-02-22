@@ -1,0 +1,144 @@
+body {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	background-color: rgb(189, 190, 190);
+	font-family: Arial, Helvetica, sans-serif;
+}
+
+.accordion__inner {
+	max-width: 50%;
+	margin: 5% auto;
+	display: flex;
+	flex-direction: column;
+	
+}
+
+.accordion__item {
+	border-radius: 3px;
+	background-color: #8a898a;
+	margin: 2%;
+	box-shadow: 0 0 5px 2px #8a898a inset, 0 0 10px 4px #3b3b3b;
+}
+
+.accordion__item:hover {
+	box-shadow: 0 0 5px 8px rgb(216, 215, 215);
+}
+
+.accordion__item--active .accordion__trigger {
+	color: #000;
+}
+
+.accordion__item--active .accordion__trigger::after {
+	content: '-';
+	color: #000;
+
+}
+
+.accordion__item .accordion__item--active {
+	box-shadow: none;
+}
+
+.accordion__item--active .accordion__answer {
+	display: block;
+}
+
+.accordion__trigger {
+	text-align: center;
+	cursor: pointer;
+	color: #fff;
+	position: relative;
+}
+
+.accordion__trigger::after {
+	content: '+';
+	font-size: 35px;
+	color: #fff;
+	position: absolute;
+	top: -7px;
+	right: 20px;
+}
+
+.accordion__question {
+	font-size: 20px;
+}
+
+.accordion__question--task {
+	color: rgb(117, 21, 21);
+}
+
+.accordion__answer {
+	font-size: 16px;
+	background-color: #fff;
+	border-radius: 0 0 3px 3px;
+	padding: 5px;
+	margin: 0;
+	display: none;
+}
+
+.accordion__interface-type {
+	color: rgb(117, 21, 21);
+}
+
+.accordion__toggle-button {
+	display: inline-block;
+	padding: 15px 30px;
+	margin: 10px 100px;
+	border-radius: 3px;
+	border: none;
+	box-shadow: 0 0 10px 55px #8a898a inset, 0 0 10px 4px #3b3b3b;
+	font-weight: bold;
+	font-size: 20px;
+	letter-spacing: 2px;
+	color: rgba(236, 234, 234, 0.753);
+	transition: .15s ease-in-out;
+	outline: none;
+	cursor: pointer;
+}
+
+.accordion__toggle-button:hover {
+	box-shadow: 0 0 5px 2px #8a898a inset, 0 0 10px 4px #3b3b3b;
+	color: #000;
+}
+
+.accordion__toggle-button:active {
+	box-shadow: 0 0 5px 5px #8a898a inset, 0 0 0 0 #3b3b3b;
+	transition: .10s ease-in-out;
+	color: #555454;
+}
+
+@media(max-width:1200px) {
+	.accordion__question {
+		font-size: 16px;
+	}
+	.accordion__toggle-button {
+		font-size: 16px;
+	}
+}
+
+@media(max-width:970px) {
+	.accordion__inner {
+		max-width: 60%;
+	}
+}
+
+@media(max-width:767px) {
+	.accordion__inner {
+		max-width: 70%;
+	}
+}
+
+@media(max-width:767px) {
+	.accordion__inner {
+		max-width: 90%;
+	}
+	.accordion__question {
+		display: block;
+		max-width: 85%;
+	}
+	.accordion__toggle-button {
+		margin: 10px 50px;
+
+	}
+
+}
