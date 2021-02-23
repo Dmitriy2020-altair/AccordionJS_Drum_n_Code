@@ -7,7 +7,7 @@ class Accordion {
 		this.container = document.getElementById(id);
 		this.type = type;
 
-		this.openItem('1');
+		this.openItem(1);
 
 		if (type === 'random') this.container.addEventListener('click', this.setUITypeRandom);
 		else {
@@ -23,6 +23,8 @@ class Accordion {
 
 		if (type === 'random') {
 			this.type = 'random';
+			this.closeAllItems();
+			this.openItem(1);
 			this.container.addEventListener('click', this.setUITypeRandom);
 
 		} else {
