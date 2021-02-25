@@ -1,39 +1,27 @@
 'use strict'
-
 class Accordion {
 	constructor(id, {
 		type = 'random'
 	}) {
 		this.container = document.getElementById(id);
 		this.type = type;
-
-		this.openItem(1);
-
-		if (type === 'random') this.container.addEventListener('click', this.setUITypeRandom);
-		else {
-			this.closeAllItems();
-			this.container.addEventListener('click', this.setUITypeParticular);
-		}
-
+		this.setUIType(type);
 	}
 
 	setUIType(type) {
-		this.container.removeEventListener('click', this.setUITypeRandom);
-		this.container.removeEventListener('click', this.setUITypeParticular);
+
+		this.closeAllItems();
+		this.openItem(1);
 
 		if (type === 'random') {
-			this.type = 'random';
-			this.closeAllItems();
-			this.openItem(1);
+			this.container.removeEventListener('click', this.setUITypeParticular);
 			this.container.addEventListener('click', this.setUITypeRandom);
-
 		} else {
-			this.type = 'particular';
-			this.closeAllItems();
-			this.openItem(1);
+			this.container.removeEventListener('click', this.setUITypeRandom);
 			this.container.addEventListener('click', this.setUITypeParticular);
-
 		}
+
+		this.type = (type === 'random') ? 'random' : 'particular';
 	}
 
 	setUITypeRandom(event) {
@@ -75,17 +63,13 @@ const accordionOne = new Accordion('accordion-one', { type: 'random' });
 
 const toggleAccordionUIButton = document.getElementById('toggleUIButton');
 const typeOfUI = toggleAccordionUIButton.querySelector('.accordion__interface-type');
-typeOfUI.textContent = 'random';
+typeOfUI.textContent = accordionOne.type;
 
 toggleAccordionUIButton.addEventListener('click', () => {
 	const typeOfUI = toggleAccordionUIButton.querySelector('.accordion__interface-type');
-
-	const newType = accordionOne.type === 'random' ?
-		'particular'
-		:
-		'random';
+	
+	const newType = (accordionOne.type === 'random') ? 'particular'	:	'random';
 
 	accordionOne.setUIType(newType);
-
 	typeOfUI.textContent = newType;
 })
